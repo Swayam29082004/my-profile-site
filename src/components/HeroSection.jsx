@@ -104,7 +104,7 @@ export default function HeroSection({ setLoading }) {
             transition={{ delay: 1.3 }}
           >
             <motion.a
-              href="www.linkedin.com/in/swayam-chaudhary"
+              href="https://www.linkedin.com/in/swayam-chaudhary"
               className="social-icon"
               whileHover={{ y: -5, scale: 1.2 }}
               whileTap={{ scale: 0.9 }}

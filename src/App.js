@@ -9,21 +9,14 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
-import GitHubErrorBoundary from './components/GitHubErrorBoundary'; // Add this import
+import GitHubErrorBoundary from './components/GitHubErrorBoundary';
+import LoadingScreen from './components/LoadingScreen'; // Add this import
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   if (loading) {
-    setTimeout(() => setLoading(false), 1000);
-    return (
-      <div className="loading-screen">
-        <div className="loading-content">
-          <div className="spaceship">🚀</div>
-          <h2>Launching Portfolio...</h2>
-        </div>
-      </div>
-    );
+    return <LoadingScreen onLoaded={() => setLoading(false)} />;
   }
 
   return (
