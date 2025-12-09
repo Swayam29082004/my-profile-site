@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Phone, Mail, MapPin, Linkedin, Globe } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,23 +15,14 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        formData,
-        'YOUR_PUBLIC_KEY'
-      );
-      
+    // Simulate form submission
+    setTimeout(() => {
       setIsSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
+      setIsSubmitting(false);
       
       setTimeout(() => setIsSubmitted(false), 3000);
-    } catch (error) {
-      console.error('Error sending email:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 1500);
   };
 
   const handleChange = (e) => {
@@ -51,7 +41,7 @@ export default function Contact() {
   ];
 
   return (
-    <section className="section contact">
+    <section id="contact" className="section contact">
       <div className="container">
         <motion.h2
           className="section-title"

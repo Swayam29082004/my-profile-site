@@ -1,174 +1,414 @@
-.app {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
+/* Projects Section */
+.projects {
+  background: linear-gradient(180deg, 
+    rgba(0, 168, 255, 0.05) 0%, 
+    rgba(255, 107, 107, 0.05) 100%
+  );
 }
 
-.canvas-background {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
+.projects-intro {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
 }
 
-.main-content {
-  position: relative;
-  z-index: 2;
-}
-
-.content-sections {
-  position: relative;
-}
-
-/* Space Navigation Dots */
-.space-nav {
-  position: fixed;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
+/* Category Filters */
+.category-filters {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  z-index: 100;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
 }
 
-.nav-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(0, 168, 255, 0.3);
-  transition: all 0.3s ease;
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  border: 2px solid var(--border-glow);
+  background: transparent;
+  color: var(--star-white);
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  position: relative;
-  display: block;
+  transition: all 0.3s ease;
 }
 
-.nav-dot:hover,
-.nav-dot.active {
-  background: var(--neon-blue);
-  transform: scale(1.3);
-  box-shadow: 0 0 15px var(--neon-blue);
+.filter-btn:hover {
+  border-color: var(--neon-blue);
+  background: rgba(0, 168, 255, 0.1);
 }
 
-.nav-dot::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 168, 255, 0.2);
-  animation: pulse 2s infinite;
+.filter-btn.active {
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+  color: var(--space-blue);
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(0, 168, 255, 0.3);
 }
 
-@keyframes pulse {
-  0% {
-    transform: translate(-50%, -50%) scale(0.8);
-    opacity: 0.7;
-  }
-  70% {
-    transform: translate(-50%, -50%) scale(1.5);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.5);
-    opacity: 0;
-  }
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
 }
 
-/* Section Styles */
-.section {
-  min-height: 100vh;
+.project-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid var(--border-glow);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--neon-blue);
+  box-shadow: 0 10px 30px rgba(0, 168, 255, 0.2);
+}
+
+.project-header {
   display: flex;
   align-items: center;
-  padding: 80px 20px;
-  position: relative;
-  scroll-snap-align: start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+.project-icon {
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--space-blue);
 }
 
-/* Smooth Scroll */
-html {
-  scroll-behavior: smooth;
+.project-title {
+  flex: 1;
+}
+
+.project-title h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--star-white);
+}
+
+.project-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-tag.web {
+  background: rgba(0, 168, 255, 0.2);
+  color: var(--neon-blue);
+  border: 1px solid var(--neon-blue);
+}
+
+.project-tag.ml {
+  background: rgba(255, 107, 107, 0.2);
+  color: var(--neon-pink);
+  border: 1px solid var(--neon-pink);
+}
+
+.project-tag.fullstack {
+  background: rgba(0, 255, 136, 0.2);
+  color: var(--neon-green);
+  border: 1px solid var(--neon-green);
+}
+
+.project-description {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  min-height: 60px;
+}
+
+.project-tech {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tech-tag {
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.featured-tag {
+  padding: 0.4rem 0.8rem;
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.project-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.stat svg {
+  color: var(--neon-green);
+}
+
+.update-date {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: rgba(0, 168, 255, 0.1);
+  color: var(--neon-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 168, 255, 0.3);
+}
+
+.project-link:hover {
+  background: rgba(0, 168, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* GitHub Stats */
+.github-stats {
+  margin-bottom: 4rem;
+}
+
+.stats-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid var(--border-glow);
+  text-align: center;
+}
+
+.stats-card h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--star-white);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid var(--border-glow);
+}
+
+.stat-item svg {
+  color: var(--neon-blue);
+}
+
+.stat-item h4 {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.25rem;
+}
+
+.stat-item p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--neon-green);
+}
+
+.github-profile-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+  color: var(--space-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.github-profile-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 168, 255, 0.3);
+}
+
+/* Featured Projects */
+.featured-projects {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid var(--border-glow);
+}
+
+.featured-projects h3 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--star-white);
+  text-align: center;
+}
+
+.featured-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.featured-item {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid var(--border-glow);
+}
+
+.featured-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--neon-blue);
+}
+
+.featured-item p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Loading State */
+.loading-projects {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(0, 168, 255, 0.3);
+  border-top: 3px solid var(--neon-blue);
+  border-radius: 50%;
+  margin: 0 auto 2rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .space-nav {
-    display: none;
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
   
-  .section {
-    padding: 60px 15px;
+  .category-filters {
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-list {
+    grid-template-columns: 1fr;
   }
 }
-/* Screen reader only class */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
+/* GitHub Error State */
+.github-error {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  margin: 2rem 0;
+}
+
+.github-error p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.github-error .btn {
+  margin: 1rem 0 2rem;
+}
+
+.static-projects {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.static-projects h3 {
+  color: var(--neon-blue);
+  margin-bottom: 1rem;
+}
+
+.static-projects ul {
+  list-style: none;
   padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
-/* Navigation Dots with better accessibility */
-.space-nav .nav-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: rgba(0, 168, 255, 0.3);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  display: block;
-  text-decoration: none;
-}
-
-.space-nav .nav-dot:hover,
-.space-nav .nav-dot:focus,
-.space-nav .nav-dot.active {
-  background: var(--neon-blue);
-  transform: scale(1.3);
-  box-shadow: 0 0 15px var(--neon-blue);
-  outline: none;
-}
-
-/* Tooltip for navigation dots */
-.space-nav .nav-dot::before {
-  content: attr(title);
-  position: absolute;
-  right: 25px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.space-nav .nav-dot:hover::before,
-.space-nav .nav-dot:focus::before {
-  opacity: 1;
-  visibility: visible;
+.static-projects li {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border-left: 3px solid var(--neon-green);
+  color: rgba(255, 255, 255, 0.8);
 }

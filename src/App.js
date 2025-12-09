@@ -5,54 +5,71 @@ import SpaceshipScene from './components/SpaceshipScene';
 import HeroSection from './components/HeroSection';
 import About from './components/About';
 import Skills from './components/Skills';
-import Contact from './components/Contact';
+import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
-import LoadingScreen from './components/LoadingScreen';
+import Contact from './components/Contact';
+import GitHubErrorBoundary from './components/GitHubErrorBoundary'; // Add this import
 
 function App() {
   const [loading, setLoading] = useState(true);
 
-  return (
-    <>
-      {loading ? (
-        <LoadingScreen onLoaded={() => setLoading(false)} />
-      ) : (
-        <div className="app">
-          {/* 3D Canvas Background */}
-          <div className="canvas-container">
-            <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-              <SpaceshipScene />
-            </Canvas>
-          </div>
-
-          {/* Main Content */}
-          <div className="content">
-            <HeroSection />
-            <About />
-            <Skills />
-            <Experience />
-            <Education />
-            <Contact />
-          </div>
-
-          {/* Navigation */}
-          <nav className="nav-dots" aria-label="Main navigation">
-            {['hero', 'about', 'skills', 'experience', 'education', 'contact'].map((section, i) => (
-              <a
-                key={section}
-                href={`#${section}`}
-                className="nav-dot"
-                aria-label={`Go to ${section} section`}
-                title={section.charAt(0).toUpperCase() + section.slice(1)}
-              >
-                <span className="sr-only">{section}</span>
-              </a>
-            ))}
-          </nav>
+  if (loading) {
+    setTimeout(() => setLoading(false), 1000);
+    return (
+      <div className="loading-screen">
+        <div className="loading-content">
+          <div className="spaceship">🚀</div>
+          <h2>Launching Portfolio...</h2>
         </div>
-      )}
-    </>
+      </div>
+    );
+  }
+
+  return (
+    <div className="app">
+      {/* 3D Canvas Background */}
+      <Canvas
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: -1
+        }}
+        camera={{ position: [0, 0, 5], fov: 50 }}
+      >
+        <SpaceshipScene />
+      </Canvas>
+
+      {/* Content Sections */}
+      <div className="content">
+        <HeroSection />
+        <About />
+        <Skills />
+        
+        {/* WRAP THE PROJECTS COMPONENT HERE */}
+        <GitHubErrorBoundary>
+          <Projects />
+        </GitHubErrorBoundary>
+        
+        <Experience />
+        <Education />
+        <Contact />
+      </div>
+
+      {/* Navigation Dots */}
+      <nav className="nav-dots">
+        <a href="#hero" className="nav-dot" aria-label="Go to hero section" />
+        <a href="#about" className="nav-dot" aria-label="Go to about section" />
+        <a href="#skills" className="nav-dot" aria-label="Go to skills section" />
+        <a href="#projects" className="nav-dot" aria-label="Go to projects section" />
+        <a href="#experience" className="nav-dot" aria-label="Go to experience section" />
+        <a href="#education" className="nav-dot" aria-label="Go to education section" />
+        <a href="#contact" className="nav-dot" aria-label="Go to contact section" />
+      </nav>
+    </div>
   );
 }
 

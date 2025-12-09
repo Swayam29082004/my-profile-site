@@ -1,23 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Palette, Rocket } from 'lucide-react';
+import { Code2, Database, Cpu, Server } from 'lucide-react';
 
 export default function About() {
   const features = [
     {
       icon: <Code2 />,
-      title: 'Clean Code',
-      description: 'Writing maintainable and scalable code following best practices'
+      title: 'Full Stack Development',
+      description: 'Building scalable applications with MERN stack and modern frameworks'
     },
     {
-      icon: <Palette />,
-      title: 'Creative Design',
-      description: 'Creating visually stunning and user-friendly interfaces'
+      icon: <Database />,
+      title: 'Data Science',
+      description: 'Analyzing data and building ML models for insightful solutions'
     },
     {
-      icon: <Rocket />,
-      title: 'Fast Performance',
-      description: 'Optimized applications for maximum speed and efficiency'
+      icon: <Cpu />,
+      title: 'Electrical Engineering',
+      description: 'Background in electrical systems and industrial automation'
+    },
+    {
+      icon: <Server />,
+      title: 'Backend Systems',
+      description: 'Designing robust server architectures and APIs'
     }
   ];
 
@@ -34,13 +39,18 @@ export default function About() {
         <div className="about-content">
           <div className="about-text">
             <p>
-              Passionate developer with 5+ years of experience creating 
-              interactive web experiences. Specialized in React, Three.js, 
-              and modern frontend technologies.
+              Ex-Backend Intern @ FyreGig | MERN Stack, Python, Java, DSA |
+              B.E. CSE (Data Science), VCET '26
             </p>
             <p>
-              I bridge the gap between stunning visuals and technical 
-              excellence, bringing ideas to life through code and creativity.
+              I am a computer science student at Vidyavardhini's College of Engineering and Technology, 
+              learning how to design, develop, and implement complex and innovative software systems 
+              using programming, data structures, algorithms, and software engineering.
+            </p>
+            <p>
+              With a background in electrical engineering, I combine technical expertise with 
+              computer science education to become a proficient and versatile engineer who can 
+              solve challenging and diverse problems in various domains.
             </p>
           </div>
 
